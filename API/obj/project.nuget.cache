@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "r0tTejVTG442gc5c/vkVVqPx1n4sMLGigJt775OJDXEnU/jNehyh6ijFYXsJUNEanN92fo0G5MxQqMu8zOUBtA==",
+  "dgSpecHash": "YU4DKiTlt0Au1PJJeqPu9cIPm1bPynZTtH+e4KE8ED+SElN8ZJJlYJI0cx5vu3n1Wnz/Iula3b+MO+zOzxdxHQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\ibrag\\RiderProjects\\ALIF_Project\\API\\API.csproj",
   "expectedPackageFiles": [
@@ -14,6 +14,9 @@
     "C:\\Users\\ibrag\\.nuget\\packages\\mediatr.contracts\\1.0.1\\mediatr.contracts.1.0.1.nupkg.sha512",
     "C:\\Users\\ibrag\\.nuget\\packages\\mediatr.extensions.microsoft.dependencyinjection\\11.1.0\\mediatr.extensions.microsoft.dependencyinjection.11.1.0.nupkg.sha512",
     "C:\\Users\\ibrag\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\5.0.16\\microsoft.aspnetcore.authentication.jwtbearer.5.0.16.nupkg.sha512",
+    "C:\\Users\\ibrag\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\5.0.16\\microsoft.aspnetcore.cryptography.internal.5.0.16.nupkg.sha512",
+    "C:\\Users\\ibrag\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\5.0.16\\microsoft.aspnetcore.cryptography.keyderivation.5.0.16.nupkg.sha512",
+    "C:\\Users\\ibrag\\.nuget\\packages\\microsoft.aspnetcore.identity.entityframeworkcore\\5.0.16\\microsoft.aspnetcore.identity.entityframeworkcore.5.0.16.nupkg.sha512",
     "C:\\Users\\ibrag\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\ibrag\\.nuget\\packages\\microsoft.data.sqlclient\\2.0.1\\microsoft.data.sqlclient.2.0.1.nupkg.sha512",
     "C:\\Users\\ibrag\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\2.0.1\\microsoft.data.sqlclient.sni.runtime.2.0.1.nupkg.sha512",
@@ -29,6 +32,8 @@
     "C:\\Users\\ibrag\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\5.0.0\\microsoft.extensions.configuration.abstractions.5.0.0.nupkg.sha512",
     "C:\\Users\\ibrag\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\5.0.2\\microsoft.extensions.dependencyinjection.5.0.2.nupkg.sha512",
     "C:\\Users\\ibrag\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\7.0.0\\microsoft.extensions.dependencyinjection.abstractions.7.0.0.nupkg.sha512",
+    "C:\\Users\\ibrag\\.nuget\\packages\\microsoft.extensions.identity.core\\5.0.16\\microsoft.extensions.identity.core.5.0.16.nupkg.sha512",
+    "C:\\Users\\ibrag\\.nuget\\packages\\microsoft.extensions.identity.stores\\5.0.16\\microsoft.extensions.identity.stores.5.0.16.nupkg.sha512",
     "C:\\Users\\ibrag\\.nuget\\packages\\microsoft.extensions.logging\\5.0.0\\microsoft.extensions.logging.5.0.0.nupkg.sha512",
     "C:\\Users\\ibrag\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\5.0.0\\microsoft.extensions.logging.abstractions.5.0.0.nupkg.sha512",
     "C:\\Users\\ibrag\\.nuget\\packages\\microsoft.extensions.options\\6.0.0\\microsoft.extensions.options.6.0.0.nupkg.sha512",
