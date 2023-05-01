@@ -8,6 +8,6 @@ namespace Domain
         public string Name { get; set; }
         public string Surname { get; set; }
         public long INN { get; set; }
-        public ICollection<Wallet> Wallet { get; set; } = new List<Wallet>(); 
+        public ICollection<Wallet> Wallets { get; set; } = new List<Wallet>(); 
     }
 }

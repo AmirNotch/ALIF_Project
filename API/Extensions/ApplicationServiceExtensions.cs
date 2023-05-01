@@ -2,6 +2,7 @@
 using API.Services;
 using Application.Core;
 using Application.Interfaces;
+using Application.Wallets;
 using Infrastructure.Security;
 using MediatR;
 using Microsoft.AspNetCore.Http;
@@ -64,7 +65,7 @@ namespace API.Extensions
                 var uri = string.Concat(request.Scheme, "://", request.Host.ToUriComponent());
                 return new UriService(uri);
             });
-            services.AddMediatR(typeof(List<>.Handler).Assembly);
+            services.AddMediatR(typeof(List.Handler).Assembly);
             services.AddAutoMapper(typeof(MappingProfiles).Assembly);
             services.AddScoped<IUserAccessor, UserAccessor>();
 

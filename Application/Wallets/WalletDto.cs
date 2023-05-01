@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using Domain;
 
-namespace Domain
+namespace Application.Wallets
 {
-    public class Wallet
+    public class WalletDto
     {
         public Guid Id { get; set; }
         public string Value { get; set; }

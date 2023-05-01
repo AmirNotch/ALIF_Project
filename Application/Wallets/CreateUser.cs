@@ -1,4 +1,4 @@
-﻿namespace Application.Wallet
+﻿namespace Application.Wallets
 {
     public class CreateUser
     {
