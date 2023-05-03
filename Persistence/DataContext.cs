@@ -9,7 +9,7 @@ namespace Persistence
     {
         public DataContext(DbContextOptions options) : base(options)
         {
-            Database.Migrate();
+            //Database.Migrate();
         }
         
         public DbSet<AppUser> AppUsers { get; set; }

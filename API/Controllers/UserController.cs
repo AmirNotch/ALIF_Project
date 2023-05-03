@@ -37,19 +37,15 @@ namespace API.Controllers
         {
             var inn = long.Parse(DecryptClass.Decrypt(loginDto.INN));
             var password = DecryptClass.Decrypt(loginDto.Password);
-            
-            
+
             var user = await _userManager.Users.FirstOrDefaultAsync(x => x.INN == inn);
-
             if (user == null) return Unauthorized();
-
             var result = await _signInManager.CheckPasswordSignInAsync(user, password, false);
 
             if (result.Succeeded)
             {
                 return CreateUserObject(user);
             }
-            
             return Unauthorized();
         }
         
@@ -60,6 +56,7 @@ namespace API.Controllers
             var email = DecryptClass.Decrypt(registerDto.Email);
             var surname = DecryptClass.Decrypt(registerDto.Surname);
             var name = DecryptClass.Decrypt(registerDto.Name);
+            var password = DecryptClass.Decrypt(registerDto.Password);
             
             if (await _userManager.Users.AnyAsync(x => x.INN == inn && x.Email == email))
             {
@@ -72,16 +69,15 @@ namespace API.Controllers
                 INN = inn,
                 Surname = surname,
                 UserName = name,
-                Name = name
+                Name = name,
+                PasswordHash = password
             };
 
             var result = await _userManager.CreateAsync(user, registerDto.Password);
-            
             if (result.Succeeded)
             {
                 return CreateUserObject(user);
             }
-
             return BadRequest("Problem registering user");
         }
         
@@ -91,7 +87,6 @@ namespace API.Controllers
         {
             var user = await _userManager.Users
                 .FirstOrDefaultAsync(x => x.Email == User.FindFirstValue(ClaimTypes.Email));
-
             return CreateUserObject(user);
         }
         

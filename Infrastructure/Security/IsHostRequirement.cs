@@ -27,7 +27,7 @@ namespace Infrastructure.Security
                 var userId = context.User.FindFirstValue(ClaimTypes.NameIdentifier);
 
                 var activityId = Guid.Parse(_httpContextAccessor.HttpContext?.Request.RouteValues
-                    .SingleOrDefault(x => x.Key == "id").Value?.ToString());
+                    .SingleOrDefault(x => x.Key == "id").Value?.ToString() ?? string.Empty);
 
                 var attendee = _dbcontext.Users
                     .AsNoTracking()
