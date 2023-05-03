@@ -1,4 +1,5 @@
-﻿using System.Security.Claims;
+﻿using System;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using API.Decryption;
 using API.DTOs;
@@ -8,6 +9,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Persistence;
 
 namespace API.Controllers
 {
@@ -19,12 +21,15 @@ namespace API.Controllers
         private readonly UserManager<AppUser> _userManager;
         private readonly SignInManager<AppUser> _signInManager;
         private readonly TokenService _tokenService;
+        private readonly DataContext _context;
         
-        public UserController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, TokenService tokenService)
+        public UserController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, 
+            TokenService tokenService, DataContext context)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _tokenService = tokenService;
+            _context = context;
         }
         
         [HttpPost("login")]
@@ -90,6 +95,15 @@ namespace API.Controllers
             return CreateUserObject(user);
         }
         
+        [Authorize]
+        [HttpGet("{inn}/ClientInfo")]
+        public async Task<ActionResult<ClientDTO>> GetUserByInn(string inn)
+        {
+            var innConverted = long.Parse(DecryptClass.Decrypt(inn));
+            var user = await _context.AppUsers
+                .FirstOrDefaultAsync(x => x.INN == innConverted);
+            return user == null ? NotFound("Client not Found!") : CreateClientObject(user);
+        }
         private UserDTO CreateUserObject(AppUser user)
         {
             return new UserDTO
@@ -97,6 +111,16 @@ namespace API.Controllers
                 Id = user.Id,
                 Name = user.Name,
                 Token = _tokenService.CreateToken(user),
+            };
+        } 
+        private ClientDTO CreateClientObject(AppUser user)
+        {
+            return new ClientDTO
+            {
+                Id = user.Id,
+                Name = user.Name,
+                Surname = user.Surname,
+                INN = user.INN
             };
         }
     }

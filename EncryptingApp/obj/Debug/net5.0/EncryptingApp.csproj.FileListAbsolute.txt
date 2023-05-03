@@ -1,0 +1,16 @@
+C:\Users\ibrag\RiderProjects\ALIF_Project\EncryptingApp\bin\Debug\net5.0\EncryptingApp.exe
+C:\Users\ibrag\RiderProjects\ALIF_Project\EncryptingApp\bin\Debug\net5.0\EncryptingApp.deps.json
+C:\Users\ibrag\RiderProjects\ALIF_Project\EncryptingApp\bin\Debug\net5.0\EncryptingApp.runtimeconfig.json
+C:\Users\ibrag\RiderProjects\ALIF_Project\EncryptingApp\bin\Debug\net5.0\EncryptingApp.runtimeconfig.dev.json
+C:\Users\ibrag\RiderProjects\ALIF_Project\EncryptingApp\bin\Debug\net5.0\EncryptingApp.dll
+C:\Users\ibrag\RiderProjects\ALIF_Project\EncryptingApp\bin\Debug\net5.0\ref\EncryptingApp.dll
+C:\Users\ibrag\RiderProjects\ALIF_Project\EncryptingApp\bin\Debug\net5.0\EncryptingApp.pdb
+C:\Users\ibrag\RiderProjects\ALIF_Project\EncryptingApp\obj\Debug\net5.0\EncryptingApp.csproj.AssemblyReference.cache
+C:\Users\ibrag\RiderProjects\ALIF_Project\EncryptingApp\obj\Debug\net5.0\EncryptingApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ibrag\RiderProjects\ALIF_Project\EncryptingApp\obj\Debug\net5.0\EncryptingApp.AssemblyInfoInputs.cache
+C:\Users\ibrag\RiderProjects\ALIF_Project\EncryptingApp\obj\Debug\net5.0\EncryptingApp.AssemblyInfo.cs
+C:\Users\ibrag\RiderProjects\ALIF_Project\EncryptingApp\obj\Debug\net5.0\EncryptingApp.csproj.CoreCompileInputs.cache
+C:\Users\ibrag\RiderProjects\ALIF_Project\EncryptingApp\obj\Debug\net5.0\EncryptingApp.dll
+C:\Users\ibrag\RiderProjects\ALIF_Project\EncryptingApp\obj\Debug\net5.0\ref\EncryptingApp.dll
+C:\Users\ibrag\RiderProjects\ALIF_Project\EncryptingApp\obj\Debug\net5.0\EncryptingApp.pdb
+C:\Users\ibrag\RiderProjects\ALIF_Project\EncryptingApp\obj\Debug\net5.0\EncryptingApp.genruntimeconfig.cache

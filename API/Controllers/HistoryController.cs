@@ -1,10 +1,14 @@
-﻿using System.Threading.Tasks;
+﻿using System.Linq;
+using System.Threading.Tasks;
 using API.Decryption;
 using API.DTOs;
+using API.Filter;
+using API.Helpers;
 using API.Services;
 using Application.Wallets;
 using Domain;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Persistence;
 
 namespace API.Controllers
@@ -33,6 +37,24 @@ namespace API.Controllers
             return Ok(await Mediator.Send(new CreateHistory.Command {History = history, FromId = fromId, ToId = toId}));
         }
         
-        [HttpGet("{Id}")]
+        [HttpGet]
+        public async Task<ActionResult> GetWallets([FromQuery] PaginationFilter filter)
+        {
+            var route = Request.Path.Value;
+            var validFilter = new PaginationFilter(filter.PageNumber, filter.PageSize);
+            var pagedData = await context.Histories
+                .Where(t => t.Wallet.Id.ToString() == filter.Id)
+                .Skip((validFilter.PageNumber - 1) * validFilter.PageSize)
+                .Take(validFilter.PageSize)
+                .ToListAsync();
+
+            if (pagedData == null)
+            {
+                return NotFound("Not Found!");
+            }
+            var totalRecords = await context.Wallets.CountAsync();
+            var pagedReponse = PaginationHelper.CreatePagedReponse<History>(pagedData, validFilter, totalRecords, uriService, route);
+            return Ok(pagedReponse);
+        }
     }
 }

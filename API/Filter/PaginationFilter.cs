@@ -8,12 +8,12 @@
         public PaginationFilter()
         {
             this.PageNumber = 1;
-            this.PageSize = 2;
+            this.PageSize = 3;
         }
         public PaginationFilter(int pageNumber, int pageSize)
         {
             this.PageNumber = pageNumber < 1 ? 1 : pageNumber;
-            this.PageSize = pageSize > 2 ? 2 : pageSize;
+            this.PageSize = pageSize > 3 ? 3 : pageSize;
         }
     }
 }
