@@ -73,7 +73,7 @@ namespace API.Controllers
                 PasswordHash = password
             };
 
-            var result = await _userManager.CreateAsync(user, registerDto.Password);
+            var result = await _userManager.CreateAsync(user, password);
             if (result.Succeeded)
             {
                 return CreateUserObject(user);
@@ -94,7 +94,7 @@ namespace API.Controllers
         [HttpGet("{inn}/ClientInfo")]
         public async Task<ActionResult<ClientDTO>> GetUserByInn(string inn)
         {
-            var innConverted = long.Parse(DecryptClass.Decrypt(inn));
+            long innConverted = long.Parse(inn);
             var user = await _context.AppUsers
                 .FirstOrDefaultAsync(x => x.INN == innConverted);
             return user == null ? NotFound("Client not Found!") : CreateClientObject(user);

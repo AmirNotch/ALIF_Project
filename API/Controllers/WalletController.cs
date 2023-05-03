@@ -39,7 +39,7 @@ namespace API.Controllers
         //     var pagedReponse = PaginationHelper.CreatePagedReponse<Wallet>(pagedData, validFilter, totalRecords, uriService, route);
         //     return Ok(pagedReponse);
         // }
-        
+        //
         // [HttpGet("search/{Id}")]
         // public async Task<ActionResult> GetWallets([FromQuery]PaginationFilter filter, Guid Id)
         // {
@@ -75,7 +75,7 @@ namespace API.Controllers
             var route = Request.Path.Value;
             var validFilter = new PaginationFilter(filter.PageNumber, filter.PageSize);
             var pagedData = await context.Wallets
-                .Where(t => t.AppUser.Id.ToString() == filter.Id)
+                .Where(t => t.AppUser.Id == Guid.Parse(filter.Id))
                 .Skip((validFilter.PageNumber - 1) * validFilter.PageSize)
                 .Take(validFilter.PageSize)
                 .ToListAsync();
