@@ -14,7 +14,7 @@ namespace API.DTOs
         public string Email { get; set; }
         
         [Required]
-        public long INN { get; set; }
+        public string INN { get; set; }
         
         
         [Required]

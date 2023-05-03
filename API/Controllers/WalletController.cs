@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
+using API.Decryption;
+using API.DTOs;
 using API.Filter;
 using API.Helpers;
 using API.Services;
@@ -56,8 +58,14 @@ namespace API.Controllers
         
         
         [HttpPost("{id}")]
-        public async Task<IActionResult> CreateWallet([FromBody] Wallet wallet, string id)
+        public async Task<IActionResult> CreateWallet([FromBody] WalletDTO walletDTO, string id)
         {
+            var wallet = new Wallet
+            {
+                Value = DecryptClass.Decrypt(walletDTO.Value),
+                Balance = int.Parse(DecryptClass.Decrypt(walletDTO.Balance)),
+                Identified = bool.Parse(DecryptClass.Decrypt(walletDTO.Value))
+            };
             return Ok(await Mediator.Send(new CreateWallet.Command {Wallet = wallet, Id = id}));
         }
     }

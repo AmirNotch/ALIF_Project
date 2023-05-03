@@ -2,7 +2,7 @@
 {
     public class LoginDTO
     {
-        public long INN { get; set; }
+        public string INN { get; set; }
         public string Password { get; set; }
     }
 }

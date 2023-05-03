@@ -1,5 +1,6 @@
 ﻿using System.Security.Claims;
 using System.Threading.Tasks;
+using API.Decryption;
 using API.DTOs;
 using API.Services;
 using Domain;
@@ -29,11 +30,15 @@ namespace API.Controllers
         [HttpPost("login")]
         public async Task<ActionResult<UserDTO>> Login(LoginDTO loginDto)
         {
-            var user = await _userManager.Users.FirstOrDefaultAsync(x => x.INN == loginDto.INN);
+            var inn = long.Parse(DecryptClass.Decrypt(loginDto.INN));
+            var password = DecryptClass.Decrypt(loginDto.Password);
+            
+            
+            var user = await _userManager.Users.FirstOrDefaultAsync(x => x.INN == inn);
 
             if (user == null) return Unauthorized();
 
-            var result = await _signInManager.CheckPasswordSignInAsync(user, loginDto.Password, false);
+            var result = await _signInManager.CheckPasswordSignInAsync(user, password, false);
 
             if (result.Succeeded)
             {
@@ -46,7 +51,12 @@ namespace API.Controllers
         [HttpPost("register")]
         public async Task<ActionResult<UserDTO>> Register(RegisterDTO registerDto)
         {
-            if (await _userManager.Users.AnyAsync(x => x.INN == registerDto.INN && x.Email == registerDto.Email))
+            var inn = long.Parse(DecryptClass.Decrypt(registerDto.INN));
+            var email = DecryptClass.Decrypt(registerDto.Email);
+            var surname = DecryptClass.Decrypt(registerDto.Surname);
+            var name = DecryptClass.Decrypt(registerDto.Name);
+            
+            if (await _userManager.Users.AnyAsync(x => x.INN == inn && x.Email == email))
             {
                 ModelState.AddModelError("email", "Email taken and INN taken");
                 return ValidationProblem();
@@ -54,10 +64,10 @@ namespace API.Controllers
             
             var user = new AppUser
             {
-                INN = registerDto.INN,
-                Surname = registerDto.Surname,
-                UserName = registerDto.Name,
-                Name = registerDto.Name
+                INN = inn,
+                Surname = surname,
+                UserName = name,
+                Name = name
             };
 
             var result = await _userManager.CreateAsync(user, registerDto.Password);
