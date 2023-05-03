@@ -75,7 +75,7 @@ namespace API.Controllers
             var route = Request.Path.Value;
             var validFilter = new PaginationFilter(filter.PageNumber, filter.PageSize);
             var pagedData = await context.Wallets
-                .Where(t => t.AppUser.Id == Guid.Parse(filter.Id))
+                .Where(t => t.AppUser.Id.ToString() == filter.Id)
                 .Skip((validFilter.PageNumber - 1) * validFilter.PageSize)
                 .Take(validFilter.PageSize)
                 .ToListAsync();
