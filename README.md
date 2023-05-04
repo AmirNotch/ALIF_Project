@@ -23,6 +23,8 @@ Infrastructure библиотека где происходит логика с 
 Сам проект Написан на WebAPI ASP.NET (.Net 5)
 )
 
+И отдельное приложение EncryptApp оно служит клиентский частью где шифруються все поля.
+
 Команда для создание миграции = dotnet ef migrations add InitMigrations -p Persistence -s API
 
 ![1234](https://user-images.githubusercontent.com/69799846/236067586-4ad566a0-2631-4874-84a3-b7df1e59fe70.png)
