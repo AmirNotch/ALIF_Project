@@ -19,4 +19,6 @@ AutoMapper позоляющий удобно работать с таблица�
 ![2345](https://user-images.githubusercontent.com/69799846/236067592-9501939d-fceb-4371-a331-fe3e7edc0294.png)
 
 ![image](https://user-images.githubusercontent.com/69799846/236067880-08efb0e6-ce9a-43b2-a4be-7f0813bd21c4.png)
+![image](https://user-images.githubusercontent.com/69799846/236079039-f1c8604a-5c3b-4c80-a487-7169642390e3.png)
+![image](https://user-images.githubusercontent.com/69799846/236079113-674c0cb0-0961-4062-9bd9-993727c94e96.png)
 
