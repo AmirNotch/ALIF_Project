@@ -64,7 +64,7 @@ namespace API.Controllers
             {
                 Value = DecryptClass.Decrypt(walletDTO.Value),
                 Balance = int.Parse(DecryptClass.Decrypt(walletDTO.Balance)),
-                Identified = bool.Parse(DecryptClass.Decrypt(walletDTO.Value))
+                Identified = bool.Parse(DecryptClass.Decrypt(walletDTO.Identified))
             };
             return Ok(await Mediator.Send(new CreateWallet.Command {Wallet = wallet, Id = id}));
         }
@@ -75,7 +75,7 @@ namespace API.Controllers
             var route = Request.Path.Value;
             var validFilter = new PaginationFilter(filter.PageNumber, filter.PageSize);
             var pagedData = await context.Wallets
-                .Where(t => t.AppUser.Id.ToString() == filter.Id)
+                .Where(t => t.AppUser.Id == filter.Id)
                 .Skip((validFilter.PageNumber - 1) * validFilter.PageSize)
                 .Take(validFilter.PageSize)
                 .ToListAsync();

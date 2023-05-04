@@ -41,7 +41,7 @@ namespace Application.Wallets
             public async Task<Result<Unit>> Handle(Command request, CancellationToken cancellationToken)
             {
                 var user = await _context.AppUsers.Where(x => 
-                    x.Id.ToString() == request.Id).FirstOrDefaultAsync();
+                    x.Id == request.Id).FirstOrDefaultAsync();
 
                 var attendee = new Wallet()
                 {
