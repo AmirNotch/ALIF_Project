@@ -38,12 +38,54 @@ namespace API.Controllers
         }
         
         [HttpGet]
-        public async Task<ActionResult> GetWallets([FromQuery] PaginationFilter filter)
+        public async Task<ActionResult> GetHistory([FromQuery] PaginationFilter filter)
         {
             var route = Request.Path.Value;
             var validFilter = new PaginationFilter(filter.PageNumber, filter.PageSize);
             var pagedData = await context.Histories
                 .Where(t => t.Wallet.Id.ToString() == filter.Id)
+                .Skip((validFilter.PageNumber - 1) * validFilter.PageSize)
+                .Take(validFilter.PageSize)
+                .ToListAsync();
+
+            if (pagedData == null)
+            {
+                return NotFound("Not Found!");
+            }
+            var totalRecords = await context.Wallets.CountAsync();
+            var pagedReponse = PaginationHelper.CreatePagedReponse<History>(pagedData, validFilter, totalRecords, uriService, route);
+            return Ok(pagedReponse);
+        }
+        
+        [HttpGet("GetTransactionsByMyself")]
+        public async Task<ActionResult> GetTransactionsByMyself([FromQuery] PaginationFilter filter)
+        {
+            var route = Request.Path.Value;
+            var validFilter = new PaginationFilter(filter.PageNumber, filter.PageSize);
+            var pagedData = await context.Histories
+                .Where(t => t.Wallet.Id.ToString() == filter.Id)
+                .Where(o => o.Sum > 0)
+                .Skip((validFilter.PageNumber - 1) * validFilter.PageSize)
+                .Take(validFilter.PageSize)
+                .ToListAsync();
+
+            if (pagedData == null)
+            {
+                return NotFound("Not Found!");
+            }
+            var totalRecords = await context.Wallets.CountAsync();
+            var pagedReponse = PaginationHelper.CreatePagedReponse<History>(pagedData, validFilter, totalRecords, uriService, route);
+            return Ok(pagedReponse);
+        }
+        
+        [HttpGet("GetTransactionsByAnother")]
+        public async Task<ActionResult> GetTransactionsByAnother([FromQuery] PaginationFilter filter)
+        {
+            var route = Request.Path.Value;
+            var validFilter = new PaginationFilter(filter.PageNumber, filter.PageSize);
+            var pagedData = await context.Histories
+                .Where(t => t.Wallet.Id.ToString() == filter.Id)
+                .Where(o => o.Sum < 0)
                 .Skip((validFilter.PageNumber - 1) * validFilter.PageSize)
                 .Take(validFilter.PageSize)
                 .ToListAsync();
